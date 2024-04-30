@@ -7,6 +7,12 @@ cart-items .title-wrapper-with-link {
   padding: 0;
   border: none;
 }
+.header__heading-like .h2 {
+  
+}
+.header>.header__heading-link {
+  color: #18d26e;
+}
 
 .cart-items th {
   text-align: left;

@@ -18,7 +18,6 @@
               >
                 <span
                   {%- if link.child_active %}
-                    class="header__active-menu-item"
                   {% endif %}
                 >
                   {{- link.title | escape -}}
@@ -90,7 +89,6 @@
           >
             <span
               {%- if link.current %}
-                class="header__active-menu-item"
               {% endif %}
             >
               {{- link.title | escape -}}

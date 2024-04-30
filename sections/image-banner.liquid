@@ -1,4 +1,11 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'icon.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
@@ -115,7 +122,7 @@
       }}
     </div>
   {%- endif -%}
-  <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div class="banner__align--center banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
@@ -160,7 +167,46 @@
                 </a>
               {%- endif -%}
             </div>
-        {%- endcase -%}
+            {% when 'intro' %}
+              <div class="intro-title">{{ block.settings.intro_title }}</div>
+              <div class="intro-content">{{ block.settings.intro_content }}</div>
+              <nav>
+                <ul class="nav__links">
+                  <li class="nav__link">
+                  <div class="nav__icon">
+                    <a href="#">
+                    <i class="fa-solid fa-house fa-xl" style="color: #c7f2de;"></i>
+                    </a>
+                  </div>
+                  <p class="icon__text">HOME</p>
+                  </li>
+                  <li class="nav__link">
+                  <div class="nav__icon">
+                    <a href="#">
+                    <i class="fa-solid fa-user fa-xl" style="color: #c7f2de;"></i>
+                    </a>
+                  </div>
+                  <p class="icon__text">ABOUT</p>
+                  </li>
+                  <li class="nav__link">
+                  <div class="nav__icon">
+                    <a href="#">
+                    <i class="fa-solid fa-bars fa-xl" style="color: #c7f2de;"></i>
+                    </a>
+                  </div>
+                  <p class="icon__text">MENU</p>
+                  </li>
+                  <li class="nav__link">
+                  <div class="nav__icon">
+                    <a href="#">
+                    <i class="fa-solid fa-gear fa-xl" style="color: #c7f2de;"></i>
+                    </a>
+                  </div>
+                  <p class="icon__text">SETTINGS</p>
+                  </li>
+                </ul>
+              </nav>
+          {%- endcase -%}
       {%- endfor -%}
     </div>
   </div>
@@ -468,6 +514,22 @@
           "id": "button_style_secondary_2",
           "default": false,
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+        }
+      ]
+    },
+    {
+      "type": "intro",
+      "name": "intro",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "intro_title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "intro_content",
+          "label": "intro_content"
         }
       ]
     }
